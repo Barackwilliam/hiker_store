@@ -1,7 +1,182 @@
 {% extends 'store/base.html' %}
 {% block title %}Contact Us — HIKER STORE TZ{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Mobile Responsive Styles for Contact Page */
+@media (max-width: 768px) {
+  /* Main layout */
+  .contact-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+  
+  /* Header section */
+  .contact-header {
+    padding: 3rem 0 2rem !important;
+  }
+  
+  .contact-header h1 {
+    font-size: clamp(2.5rem, 8vw, 3.5rem) !important;
+  }
+  
+  /* WhatsApp button */
+  .whatsapp-btn {
+    padding: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .whatsapp-btn svg {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  
+  .whatsapp-btn div:first-child {
+    font-size: 1.1rem !important;
+  }
+  
+  /* Phone cards */
+  .phone-card {
+    padding: 0.875rem 1rem !important;
+  }
+  
+  .phone-card span:first-child {
+    font-size: 1.1rem !important;
+  }
+  
+  /* Location badges */
+  .location-badge {
+    font-size: 0.7rem !important;
+    padding: 3px 10px !important;
+  }
+  
+  /* Form section */
+  .contact-form {
+    padding: 1.5rem !important;
+  }
+  
+  .contact-form h3 {
+    font-size: 1.5rem !important;
+  }
+  
+  .contact-form p {
+    font-size: 0.8rem !important;
+  }
+  
+  /* Form inputs */
+  .form-input, .form-textarea {
+    padding: 0.65rem 0.875rem !important;
+    font-size: 0.9rem !important;
+  }
+  
+  .form-label {
+    font-size: 0.65rem !important;
+    margin-bottom: 0.3rem !important;
+  }
+  
+  /* Submit button */
+  .submit-btn {
+    padding: 0.875rem !important;
+    font-size: 0.9rem !important;
+  }
+  
+  /* Toast message */
+  .toast-message {
+    bottom: 1rem !important;
+    left: 1rem !important;
+    right: 1rem !important;
+    padding: 0.875rem !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small devices */
+  .contact-header {
+    padding: 2rem 0 1.5rem !important;
+  }
+  
+  .whatsapp-btn {
+    padding: 0.875rem !important;
+  }
+  
+  .whatsapp-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  
+  .phone-card {
+    padding: 0.75rem !important;
+  }
+  
+  .contact-form {
+    padding: 1.25rem !important;
+  }
+  
+  .contact-form h3 {
+    font-size: 1.3rem !important;
+  }
+  
+  .form-input, .form-textarea {
+    padding: 0.6rem 0.75rem !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  .phone-card, .whatsapp-btn, .submit-btn {
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+  
+  .phone-card:active, .whatsapp-btn:active {
+    transform: scale(0.98) !important;
+    transition: transform 0.1s !important;
+  }
+}
+
+/* Toast notification */
+.toast-message {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+  background: var(--lime);
+  color: var(--dark);
+  padding: 1rem;
+  border-radius: 8px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-align: center;
+  z-index: 1000;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.toast-message.error {
+  background: #dc2626;
+  color: white;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+</style>
+{% endblock %}
+
 {% block content %}
-<div style="background:linear-gradient(to bottom,var(--forest-mid),var(--dark));border-bottom:1px solid rgba(168,200,50,0.1);padding:5rem 0 4rem;">
+<!-- Header -->
+<div style="background:linear-gradient(to bottom,var(--forest-mid),var(--dark));border-bottom:1px solid rgba(168,200,50,0.1);padding:5rem 0 4rem;" class="contact-header">
   <div class="container">
     <div class="section-label">Get In Touch</div>
     <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6rem);letter-spacing:0.04em;line-height:0.95;margin-top:0.5rem;">
@@ -10,83 +185,123 @@
   </div>
 </div>
 
+<!-- Main Content -->
 <div style="padding:5rem 0;">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start;">
+    <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start;" class="contact-grid">
 
-      <!-- Contact Info -->
+      <!-- Contact Info - Left Side -->
       <div class="reveal">
         <h2 style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.05em;margin-bottom:2rem;">REACH US <span style="color:var(--lime);">DIRECTLY</span></h2>
 
-        <!-- WhatsApp - most prominent -->
-        <a href="https://wa.me/{{ whatsapp_number }}?text=Habari!%20Ninataka%20msaada%20kuhusu%20vifaa%20vyenu." target="_blank"
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/{{ whatsapp_number }}?text=Habari!%20Ninataka%20msaada%20kuhusu%20vifaa%20vyenu." 
+           target="_blank"
+           class="whatsapp-btn"
            style="display:flex;align-items:center;gap:1rem;background:#25D366;border-radius:12px;padding:1.5rem;text-decoration:none;color:white;transition:all 0.3s;margin-bottom:1.5rem;"
            onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(37,211,102,0.4)'"
            onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
           <div>
             <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.1em;">WHATSAPP US NOW</div>
             <div style="font-size:0.8rem;opacity:0.85;">Fastest response — click to chat</div>
           </div>
         </a>
 
-        <!-- Phone numbers -->
-        {% for phone in store_contacts.phone1|make_list %}{% endfor %}
+        <!-- Phone Numbers -->
         <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
-          <a href="tel:{{ store_contacts.phone1 }}" style="display:flex;align-items:center;gap:1rem;background:var(--forest);border:1px solid rgba(168,200,50,0.12);border-radius:8px;padding:1rem 1.25rem;text-decoration:none;color:var(--white);transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(168,200,50,0.4)'" onmouseout="this.style.borderColor='rgba(168,200,50,0.12)'">
+          {% if store_contacts.phone1 %}
+          <a href="tel:{{ store_contacts.phone1 }}" 
+             class="phone-card"
+             style="display:flex;align-items:center;gap:1rem;background:var(--forest);border:1px solid rgba(168,200,50,0.12);border-radius:8px;padding:1rem 1.25rem;text-decoration:none;color:var(--white);transition:all 0.2s;" 
+             onmouseover="this.style.borderColor='rgba(168,200,50,0.4)'" 
+             onmouseout="this.style.borderColor='rgba(168,200,50,0.12)'">
             <span style="font-size:1.25rem;">📞</span>
             <div>
               <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.2em;color:var(--lime);text-transform:uppercase;">Call Us</div>
               <div style="font-weight:500;">{{ store_contacts.phone1 }}</div>
             </div>
           </a>
-          <a href="tel:{{ store_contacts.phone2 }}" style="display:flex;align-items:center;gap:1rem;background:var(--forest);border:1px solid rgba(168,200,50,0.12);border-radius:8px;padding:1rem 1.25rem;text-decoration:none;color:var(--white);transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(168,200,50,0.4)'" onmouseout="this.style.borderColor='rgba(168,200,50,0.12)'">
+          {% endif %}
+          
+          {% if store_contacts.phone2 %}
+          <a href="tel:{{ store_contacts.phone2 }}" 
+             class="phone-card"
+             style="display:flex;align-items:center;gap:1rem;background:var(--forest);border:1px solid rgba(168,200,50,0.12);border-radius:8px;padding:1rem 1.25rem;text-decoration:none;color:var(--white);transition:all 0.2s;" 
+             onmouseover="this.style.borderColor='rgba(168,200,50,0.4)'" 
+             onmouseout="this.style.borderColor='rgba(168,200,50,0.12)'">
             <span style="font-size:1.25rem;">📞</span>
             <div>
               <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.2em;color:var(--lime);text-transform:uppercase;">Call Us</div>
               <div style="font-weight:500;">{{ store_contacts.phone2 }}</div>
             </div>
           </a>
-          <a href="tel:{{ store_contacts.phone3 }}" style="display:flex;align-items:center;gap:1rem;background:var(--forest);border:1px solid rgba(168,200,50,0.12);border-radius:8px;padding:1rem 1.25rem;text-decoration:none;color:var(--white);transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(168,200,50,0.4)'" onmouseout="this.style.borderColor='rgba(168,200,50,0.12)'">
+          {% endif %}
+          
+          {% if store_contacts.phone3 %}
+          <a href="tel:{{ store_contacts.phone3 }}" 
+             class="phone-card"
+             style="display:flex;align-items:center;gap:1rem;background:var(--forest);border:1px solid rgba(168,200,50,0.12);border-radius:8px;padding:1rem 1.25rem;text-decoration:none;color:var(--white);transition:all 0.2s;" 
+             onmouseover="this.style.borderColor='rgba(168,200,50,0.4)'" 
+             onmouseout="this.style.borderColor='rgba(168,200,50,0.12)'">
             <span style="font-size:1.25rem;">📞</span>
             <div>
               <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.2em;color:var(--lime);text-transform:uppercase;">Call Us</div>
               <div style="font-weight:500;">{{ store_contacts.phone3 }}</div>
             </div>
           </a>
+          {% endif %}
         </div>
 
         <!-- Locations -->
         <div style="background:var(--forest);border:1px solid rgba(168,200,50,0.12);border-radius:8px;padding:1.25rem;">
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.2em;color:var(--lime);text-transform:uppercase;margin-bottom:0.75rem;">Our Locations</div>
           <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-            <span style="background:rgba(168,200,50,0.1);border:1px solid rgba(168,200,50,0.2);color:var(--lime);font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;letter-spacing:0.1em;padding:4px 12px;border-radius:50px;">📍 Dar es Salaam</span>
-            <span style="background:rgba(168,200,50,0.1);border:1px solid rgba(168,200,50,0.2);color:var(--lime);font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;letter-spacing:0.1em;padding:4px 12px;border-radius:50px;">📍 Arusha</span>
+            <span class="location-badge" style="background:rgba(168,200,50,0.1);border:1px solid rgba(168,200,50,0.2);color:var(--lime);font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;letter-spacing:0.1em;padding:4px 12px;border-radius:50px;">📍 Dar es Salaam</span>
+            <span class="location-badge" style="background:rgba(168,200,50,0.1);border:1px solid rgba(168,200,50,0.2);color:var(--lime);font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;letter-spacing:0.1em;padding:4px 12px;border-radius:50px;">📍 Arusha</span>
           </div>
         </div>
       </div>
 
-      <!-- Inquiry Form -->
+      <!-- Inquiry Form - Right Side -->
       <div class="reveal" style="transition-delay:200ms">
-        <div style="background:var(--forest);border:1px solid rgba(168,200,50,0.12);border-radius:16px;padding:2.5rem;position:relative;overflow:hidden;">
+        <div class="contact-form" style="background:var(--forest);border:1px solid rgba(168,200,50,0.12);border-radius:16px;padding:2.5rem;position:relative;overflow:hidden;">
           <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--lime),transparent);"></div>
           <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.75rem;letter-spacing:0.05em;margin-bottom:0.5rem;">SEND A MESSAGE</h3>
           <p style="color:rgba(248,245,238,0.5);font-size:0.875rem;margin-bottom:2rem;">We'll get back to you as soon as possible</p>
           
           <div style="display:flex;flex-direction:column;gap:1rem;">
             <div>
-              <label style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.2em;color:var(--lime);text-transform:uppercase;display:block;margin-bottom:0.4rem;">Your Name *</label>
-              <input type="text" id="cName" placeholder="e.g. John Mwangi" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(168,200,50,0.15);border-radius:6px;padding:0.75rem 1rem;color:var(--white);font-family:'Barlow',sans-serif;font-size:0.95rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(168,200,50,0.5)'" onblur="this.style.borderColor='rgba(168,200,50,0.15)'">
+              <label class="form-label" style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.2em;color:var(--lime);text-transform:uppercase;display:block;margin-bottom:0.4rem;">Your Name *</label>
+              <input type="text" id="cName" placeholder="e.g. John Mwangi" 
+                     class="form-input"
+                     style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(168,200,50,0.15);border-radius:6px;padding:0.75rem 1rem;color:var(--white);font-family:'Barlow',sans-serif;font-size:0.95rem;outline:none;transition:border-color 0.2s;" 
+                     onfocus="this.style.borderColor='rgba(168,200,50,0.5)'" 
+                     onblur="this.style.borderColor='rgba(168,200,50,0.15)'">
             </div>
             <div>
-              <label style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.2em;color:var(--lime);text-transform:uppercase;display:block;margin-bottom:0.4rem;">Phone Number</label>
-              <input type="tel" id="cPhone" placeholder="e.g. 0712345678" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(168,200,50,0.15);border-radius:6px;padding:0.75rem 1rem;color:var(--white);font-family:'Barlow',sans-serif;font-size:0.95rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(168,200,50,0.5)'" onblur="this.style.borderColor='rgba(168,200,50,0.15)'">
+              <label class="form-label" style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.2em;color:var(--lime);text-transform:uppercase;display:block;margin-bottom:0.4rem;">Phone Number</label>
+              <input type="tel" id="cPhone" placeholder="e.g. 0712345678" 
+                     class="form-input"
+                     style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(168,200,50,0.15);border-radius:6px;padding:0.75rem 1rem;color:var(--white);font-family:'Barlow',sans-serif;font-size:0.95rem;outline:none;transition:border-color 0.2s;" 
+                     onfocus="this.style.borderColor='rgba(168,200,50,0.5)'" 
+                     onblur="this.style.borderColor='rgba(168,200,50,0.15)'">
             </div>
             <div>
-              <label style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.2em;color:var(--lime);text-transform:uppercase;display:block;margin-bottom:0.4rem;">Your Message *</label>
-              <textarea id="cMessage" rows="5" placeholder="What gear are you looking for? Any questions?" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(168,200,50,0.15);border-radius:6px;padding:0.75rem 1rem;color:var(--white);font-family:'Barlow',sans-serif;font-size:0.95rem;outline:none;resize:vertical;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(168,200,50,0.5)'" onblur="this.style.borderColor='rgba(168,200,50,0.15)'"></textarea>
+              <label class="form-label" style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:0.2em;color:var(--lime);text-transform:uppercase;display:block;margin-bottom:0.4rem;">Your Message *</label>
+              <textarea id="cMessage" rows="5" placeholder="What gear are you looking for? Any questions?" 
+                        class="form-textarea"
+                        style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(168,200,50,0.15);border-radius:6px;padding:0.75rem 1rem;color:var(--white);font-family:'Barlow',sans-serif;font-size:0.95rem;outline:none;resize:vertical;transition:border-color 0.2s;" 
+                        onfocus="this.style.borderColor='rgba(168,200,50,0.5)'" 
+                        onblur="this.style.borderColor='rgba(168,200,50,0.15)'"></textarea>
             </div>
-            <button onclick="submitContact()" style="background:var(--lime);color:var(--dark);font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;border:none;padding:1rem;border-radius:8px;cursor:none;transition:all 0.3s;width:100%;" onmouseover="this.style.background='#c0e030'" onmouseout="this.style.background='var(--lime)'">
+            <button onclick="submitContact()" 
+                    class="submit-btn"
+                    style="background:var(--lime);color:var(--dark);font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;border:none;padding:1rem;border-radius:8px;cursor:pointer;transition:all 0.3s;width:100%;" 
+                    onmouseover="this.style.background='#c0e030'" 
+                    onmouseout="this.style.background='var(--lime)'">
               SEND MESSAGE →
             </button>
             <p style="text-align:center;font-size:0.8rem;color:rgba(248,245,238,0.35);">Or contact us directly on WhatsApp for faster response</p>
@@ -100,35 +315,88 @@
 
 {% block extra_js %}
 <script>
+function showToast(message, type = 'success') {
+  // Remove existing toast
+  const existingToast = document.querySelector('.toast-message');
+  if (existingToast) existingToast.remove();
+  
+  // Create new toast
+  const toast = document.createElement('div');
+  toast.className = `toast-message ${type}`;
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  
+  // Auto remove after 4 seconds
+  setTimeout(() => {
+    if (toast) toast.remove();
+  }, 4000);
+}
+
 async function submitContact() {
   const name = document.getElementById('cName').value.trim();
   const phone = document.getElementById('cPhone').value.trim();
   const message = document.getElementById('cMessage').value.trim();
-  if (!name || !message) { showToast('Please fill in your name and message.', 'error'); return; }
+  
+  if (!name || !message) {
+    showToast('Please fill in your name and message.', 'error');
+    return;
+  }
+  
+  // Show loading state
+  const submitBtn = document.querySelector('.submit-btn');
+  const originalText = submitBtn.textContent;
+  submitBtn.textContent = 'SENDING...';
+  submitBtn.disabled = true;
+  
   try {
     const resp = await fetch('/api/inquiry/', {
-      method:'POST',
-      headers:{'Content-Type':'application/json','X-CSRFToken':getCookie('csrftoken')},
-      body:JSON.stringify({name,phone,message})
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCookie('csrftoken')
+      },
+      body: JSON.stringify({ name, phone, message })
     });
+    
     const data = await resp.json();
+    
     if (data.success) {
       showToast('✅ Message sent! We\'ll contact you soon.');
-      document.getElementById('cName').value='';
-      document.getElementById('cPhone').value='';
-      document.getElementById('cMessage').value='';
-    } else { showToast(data.message,'error'); }
-  } catch(e) { showToast('Error. Please try WhatsApp.','error'); }
+      document.getElementById('cName').value = '';
+      document.getElementById('cPhone').value = '';
+      document.getElementById('cMessage').value = '';
+    } else {
+      showToast(data.message || 'Error sending message. Please try WhatsApp.', 'error');
+    }
+  } catch(e) {
+    showToast('Network error. Please try WhatsApp or call us directly.', 'error');
+  } finally {
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  }
 }
+
 function getCookie(name) {
-  let cv=null;
-  if(document.cookie&&document.cookie!==''){
-    document.cookie.split(';').forEach(c=>{
-      const t=c.trim();
-      if(t.startsWith(name+'='))cv=decodeURIComponent(t.slice(name.length+1));
+  let cv = null;
+  if (document.cookie && document.cookie !== '') {
+    document.cookie.split(';').forEach(c => {
+      const t = c.trim();
+      if (t.startsWith(name + '=')) {
+        cv = decodeURIComponent(t.slice(name.length + 1));
+      }
     });
   }
   return cv;
 }
+
+// Touch improvements for mobile
+document.querySelectorAll('.phone-card, .whatsapp-btn, .submit-btn').forEach(el => {
+  el.addEventListener('touchstart', function() {
+    this.style.transform = 'scale(0.98)';
+  });
+  el.addEventListener('touchend', function() {
+    this.style.transform = '';
+  });
+});
 </script>
 {% endblock %}

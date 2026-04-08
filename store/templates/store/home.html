@@ -5,6 +5,68 @@
 
 {% block extra_css %}
 <style>
+
+/* Sliding backgrounds kwa DEFAULT slide pekee */
+.slide-bg-slider {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.slide-bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+  z-index: 0;
+}
+
+.slide-bg-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Dark overlay */
+.slide-bg-slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10,26,10,0.85) 0%, rgba(26,46,26,0.75) 100%);
+  pointer-events: none;
+}
+
+/* Picha za background kwa default slide */
+.slide-bg-1 {
+  background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600');
+}
+.slide-bg-2 {
+  background-image: url('https://images.unsplash.com/photo-1537905569824-f89f14cceb68?w=1600');
+}
+.slide-bg-3 {
+  background-image: url('https://images.unsplash.com/photo-1551632811-561732d1e306?w=1600');
+}
+
+/* Ensure content is above background */
+#slide-default .hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+
+
+
+
+
+
+
+
+
+
 /* ============ HERO ============ */
 .hero {
   position: relative;
@@ -445,15 +507,22 @@
     <path d="M0,200 L180,140 L360,170 L540,110 L720,150 L900,90 L1080,130 L1260,80 L1440,120 L1440,200 Z" fill="rgba(168,200,50,0.03)"/>
   </svg>
 
-  <div class="hero-slides-container">
-    <!-- Slide 1: Default / No hero slides configured -->
+ <div class="hero-slides-container">
+    <!-- Slide 1: Default with sliding backgrounds -->
     <div class="hero-slide active" id="slide-default">
+      <!-- Sliding Background Images kwa slide hii pekee -->
+      <div class="slide-bg-slider">
+        <div class="slide-bg-slide slide-bg-1 active"></div>
+        <div class="slide-bg-slide slide-bg-2"></div>
+        <div class="slide-bg-slide slide-bg-3"></div>
+      </div>
+      
       <div class="hero-content">
         <div class="hero-left">
           <div class="hero-overline">Tanzania's Finest</div>
           <h1 class="hero-title">
-            GEAR UP<br>
-            <span class="accent">EXPLORE</span><br>
+            GEAR UP
+            <span class="accent">EXPLORE</span>
             MORE
           </h1>
           <p class="hero-subtitle">Premium camping, hiking & tactical gear for the modern Tanzanian adventurer. Built to perform in Africa's most demanding environments.</p>
@@ -554,41 +623,6 @@
   </div>
 </div>
 
-<!-- FEATURES STRIP -->
-<div class="features-strip reveal">
-  <div class="container">
-    <div class="features-inner">
-      <div class="feature-item">
-        <div class="feature-icon">🚚</div>
-        <div class="feature-text">
-          <div class="feature-title">Nationwide Delivery</div>
-          <div class="feature-sub">Dar es Salaam & Arusha</div>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🛡️</div>
-        <div class="feature-text">
-          <div class="feature-title">Quality Guaranteed</div>
-          <div class="feature-sub">Durable field-tested gear</div>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">💬</div>
-        <div class="feature-text">
-          <div class="feature-title">WhatsApp Support</div>
-          <div class="feature-sub">Instant response</div>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">⛺</div>
-        <div class="feature-text">
-          <div class="feature-title">Pro Outdoor Gear</div>
-          <div class="feature-sub">For serious adventurers</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- CATEGORIES SECTION -->
 <section class="categories-section">
@@ -820,6 +854,64 @@
 
 {% block extra_js %}
 <script>
+
+
+// SLIDING BACKGROUNDS KWA DEFAULT SLIDE TU
+const defaultSlide = document.getElementById('slide-default');
+let defaultBgInterval = null;
+
+function startDefaultSlideBackgrounds() {
+  const bgSlides = document.querySelectorAll('#slide-default .slide-bg-slide');
+  if (!bgSlides.length || bgSlides.length < 2) return;
+  
+  let currentBg = 0;
+  
+  function changeBg() {
+    bgSlides[currentBg].classList.remove('active');
+    currentBg = (currentBg + 1) % bgSlides.length;
+    bgSlides[currentBg].classList.add('active');
+  }
+  
+  // Start interval only if default slide is active
+  if (defaultSlide && defaultSlide.classList.contains('active')) {
+    if (defaultBgInterval) clearInterval(defaultBgInterval);
+    defaultBgInterval = setInterval(changeBg, 6000);
+  }
+}
+
+// Watch for slide changes to control background animation
+function watchSlideChanges() {
+  const slides = document.querySelectorAll('.hero-slide');
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      if (mutation.attributeName === 'class') {
+        const activeSlide = document.querySelector('.hero-slide.active');
+        if (activeSlide && activeSlide.id === 'slide-default') {
+          // Default slide is active - start backgrounds
+          if (!defaultBgInterval) {
+            startDefaultSlideBackgrounds();
+          }
+        } else {
+          // Default slide not active - stop backgrounds
+          if (defaultBgInterval) {
+            clearInterval(defaultBgInterval);
+            defaultBgInterval = null;
+          }
+        }
+      }
+    });
+  });
+  
+  slides.forEach(slide => {
+    observer.observe(slide, { attributes: true });
+  });
+}
+
+// Initialize
+startDefaultSlideBackgrounds();
+watchSlideChanges();
+
+
 // HERO PARTICLES
 const container = document.getElementById('particles');
 for (let i = 0; i < 30; i++) {
