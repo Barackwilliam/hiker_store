@@ -2,8 +2,39 @@
 {% load template_helpers %}
 {% block title %}About Us — HIKER STORE TZ{% endblock %}
 {% block content %}
-<div style="background:linear-gradient(to bottom,var(--forest-mid),var(--dark));border-bottom:1px solid rgba(168,200,50,0.1);padding:5rem 0 4rem;position:relative;overflow:hidden;">
-  <div style="position:absolute;right:5%;top:50%;transform:translateY(-50%);font-size:14rem;opacity:0.04;pointer-events:none;">🏔️</div>
+
+<style>
+/* Mobile Responsive Styles for About Page */
+@media (max-width: 768px) {
+    .about-hero { padding: 3rem 0 2.5rem !important; }
+    .about-hero h1 { font-size: 3rem !important; }
+    .about-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    .about-grid h2 { font-size: 2rem !important; }
+    .about-grid p { font-size: 0.9rem !important; }
+    .features-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.75rem !important; }
+    .features-grid div { padding: 0.75rem !important; }
+    .features-grid div div:first-child { font-size: 1.25rem !important; }
+    .features-grid div div:last-child { font-size: 0.65rem !important; }
+    .mission-section { padding: 1.5rem !important; margin-top: 2rem !important; }
+    .mission-section h3 { font-size: 1.5rem !important; }
+    .mission-section p { font-size: 0.9rem !important; }
+    .locations-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+    .locations-grid > div { padding: 1.5rem !important; }
+    .locations-grid h3 { font-size: 1.5rem !important; }
+}
+
+@media (max-width: 480px) {
+    .about-grid h2 { font-size: 1.75rem !important; }
+    .features-grid { grid-template-columns: 1fr !important; }
+    .features-grid div { display: flex; align-items: center; gap: 0.75rem; text-align: left !important; }
+    .features-grid div div:first-child { font-size: 1.5rem !important; margin-bottom: 0 !important; }
+    .container { width: 92% !important; padding: 0 0.75rem !important; }
+    .btn { padding: 0.7rem 1.5rem !important; font-size: 0.8rem !important; }
+}
+</style>
+
+<div style="background:linear-gradient(to bottom,var(--forest-mid),var(--dark));border-bottom:1px solid rgba(168,200,50,0.1);padding:5rem 0 4rem;position:relative;overflow:hidden;" class="about-hero">
+  <div style="position:absolute;right:5%;top:50%;transform:translateY(-50%);font-size:14rem;opacity:0.04;pointer-events:none;display:none;">🏔️</div>
   <div class="container">
     <div class="section-label">Who We Are</div>
     <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6rem);letter-spacing:0.04em;line-height:0.95;margin-top:0.5rem;">
@@ -14,7 +45,7 @@
 
 <div style="padding:5rem 0;">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;" class="reveal">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;" class="about-grid reveal">
       <div>
         <div class="section-label">Founded 2021</div>
         <h2 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.04em;color:var(--white);margin:0.5rem 0 1.5rem;">TANZANIA'S OUTDOOR <span style="color:var(--lime);">SPECIALISTS</span></h2>
@@ -30,7 +61,9 @@
         <a href="{% url 'all_products' %}" class="btn btn-primary">Browse Our Gear →</a>
       </div>
       <div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+
+        {% comment %}
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;" class="features-grid">
           {% for item in "⛺ Tents,🎒 Backpacks,🥾 Hiking Boots,🧭 Navigation,🔦 Lighting,💧 Hydration,🪑 Camping Chairs,☂️ Umbrellas,📻 Radio Calls,🌿 Garden Tools"|split:"," %}
           <div style="background:var(--forest);border:1px solid rgba(168,200,50,0.1);border-radius:8px;padding:1.25rem;text-align:center;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(168,200,50,0.4)'" onmouseout="this.style.borderColor='rgba(168,200,50,0.1)'">
             <div style="font-size:1.5rem;margin-bottom:0.25rem;">{{ item|slice:":2" }}</div>
@@ -38,11 +71,12 @@
           </div>
           {% endfor %}
         </div>
+        {% endcomment %}
       </div>
     </div>
 
     <!-- MISSION -->
-    <div style="margin-top:5rem;background:var(--forest);border:1px solid rgba(168,200,50,0.1);border-radius:16px;padding:3rem;position:relative;overflow:hidden;" class="reveal">
+    <div style="margin-top:5rem;background:var(--forest);border:1px solid rgba(168,200,50,0.1);border-radius:16px;padding:3rem;position:relative;overflow:hidden;" class="mission-section reveal">
       <div style="position:absolute;top:-1px;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--lime),transparent);"></div>
       <div style="text-align:center;max-width:700px;margin:0 auto;">
         <div style="font-size:3rem;margin-bottom:1rem;">🎯</div>
@@ -60,7 +94,7 @@
         <div class="section-label" style="justify-content:center;">Find Us</div>
         <h2 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.04em;margin-top:0.5rem;">OUR <span style="color:var(--lime);">LOCATIONS</span></h2>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;" class="locations-grid">
         <div style="background:var(--forest);border:1px solid rgba(168,200,50,0.15);border-radius:12px;padding:2.5rem;text-align:center;position:relative;overflow:hidden;">
           <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--lime);"></div>
           <div style="font-size:3rem;margin-bottom:1rem;">🌊</div>

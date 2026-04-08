@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: hiker-store-tz
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn hiker_store.wsgi:application"
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: hiker-store-db
+          property: connectionString
+
+databases:
+  - name: hiker-store-db
+    plan: free

@@ -24,7 +24,7 @@ class Category(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     description = models.TextField(blank=True)
     icon = models.CharField(max_length=30, choices=ICON_CHOICES, default='backpack')
-    image_url = models.URLField(blank=True, help_text="Uploadcare CDN URL")
+    image_url = models.CharField(blank=True, help_text="Uploadcare CDN URL")
     order = models.IntegerField(default=0)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -58,10 +58,10 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     old_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     condition = models.CharField(max_length=10, choices=CONDITION_CHOICES, default='new')
-    image_url = models.URLField(blank=True, help_text="Uploadcare CDN URL - main image")
-    image_url_2 = models.URLField(blank=True)
-    image_url_3 = models.URLField(blank=True)
-    image_url_4 = models.URLField(blank=True)
+    image_url = models.CharField(blank=True, help_text="Uploadcare CDN URL - main image")
+    image_url_2 = models.CharField(max_length=255, blank=True, null=True)
+    image_url_3 = models.CharField(max_length=255, blank=True, null=True)
+    image_url_4 = models.CharField(max_length=255, blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_featured = models.BooleanField(default=False)
     in_stock = models.BooleanField(default=True)
@@ -101,13 +101,26 @@ class Product(models.Model):
                 imgs.append(url)
         return imgs
 
+    # Open Graph image (Facebook / WhatsApp preview)
+    def get_og_image_url(self):
+        if self.image_url:
+            return f"https://ucarecdn.com/{self.image_url}/-/resize/1200x630/-/format/auto/"
+        return ""
+
+    # Optimized image for normal website usage
+    def get_image_url(self):
+        if self.image:
+            return f"https://ucarecdn.com/{self.image_url}/-/format/jpg/-/quality/smart/"
+        return ""
+
+
 
 class HeroSlide(models.Model):
     title = models.CharField(max_length=200)
     subtitle = models.CharField(max_length=300, blank=True)
     cta_text = models.CharField(max_length=50, default='Shop Now')
     cta_link = models.CharField(max_length=200, default='/')
-    image_url = models.URLField(blank=True)
+    image_url = models.CharField(max_length=255, blank=True, null=True)
     order = models.IntegerField(default=0)
     is_active = models.BooleanField(default=True)
 
