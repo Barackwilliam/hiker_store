@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from .models import Category, Product, HeroSlide, Inquiry
-from .forms import ProductAdminForm, CategoryAdminForm
+from .forms import ProductAdminForm, CategoryAdminForm,HeroSlideAdminForm
 
 
 @admin.register(Category)
@@ -96,8 +96,34 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(HeroSlide)
 class HeroSlideAdmin(admin.ModelAdmin):
+    form = HeroSlideAdminForm
     list_display = ['title', 'order', 'is_active']
     list_editable = ['order', 'is_active']
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        formfield = super().formfield_for_dbfield(db_field, **kwargs)
+
+        # Kwenye model yako field inaitwa 'image_url'
+        if db_field.name == "image_url":
+            formfield.widget.attrs.update({
+                "role": "uploadcare-uploader",
+                "data-public-key": "4c3ba9de492e0e0eaddc",
+                "data-images-only": "true",
+            })
+        return formfield
+
+    def image_preview(self, obj):
+        if obj.image_url:
+            url = f"https://ucarecdn.com/{obj.image_url}/-/resize/x40/-/format/auto/"
+            return mark_safe(f'<img src="{url}" style="max-height:40px; border-radius:4px;" />')
+        return "No Image"
+
+    image_preview.short_description = "Preview"
+
+    def product_count_display(self, obj):
+        return obj.product_count
+    
+    product_count_display.short_description = "Products"
 
 
 @admin.register(Inquiry)

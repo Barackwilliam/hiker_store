@@ -1,4 +1,4 @@
-from .models import Category,Product
+from .models import Category,Product,HeroSlide
 from django import forms
 
 class CategoryAdminForm(forms.ModelForm):
@@ -15,6 +15,16 @@ class CategoryAdminForm(forms.ModelForm):
 class ProductAdminForm(forms.ModelForm):
     class Meta:
         model = Product
+        fields = '__all__'
+
+    class Media:
+        js = [
+            'https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js',
+        ]
+
+class HeroSlideAdminForm(forms.ModelForm):
+    class Meta:
+        model = HeroSlide
         fields = '__all__'
 
     class Media:

@@ -130,6 +130,18 @@ class HeroSlide(models.Model):
     def __str__(self):
         return self.title
 
+     # Open Graph image (Facebook / WhatsApp preview)
+    def get_og_image_url(self):
+        if self.image_url:
+            return f"https://ucarecdn.com/{self.image_url}/-/resize/1200x630/-/format/auto/"
+        return ""
+
+    # Optimized image for normal website usage
+    def get_image_url(self):
+        if self.image_url:
+            return f"https://ucarecdn.com/{self.image_url}/-/format/jpg/-/quality/smart/"
+        return ""
+
 
 class Inquiry(models.Model):
     name = models.CharField(max_length=100)
