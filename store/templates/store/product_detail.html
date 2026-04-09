@@ -8,12 +8,12 @@
   padding: 1.5rem 0;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.8rem; letter-spacing: 0.1em;
-  color: rgba(248,245,238,0.4);
+  color: rgba(26,26,26,0.4);
 }
-.breadcrumb a { color: rgba(248,245,238,0.4); text-decoration: none; transition: color 0.2s; }
-.breadcrumb a:hover { color: var(--lime); }
-.breadcrumb .sep { color: rgba(168,200,50,0.3); }
-.breadcrumb .current { color: var(--lime); }
+.breadcrumb a { color: rgba(26,26,26,0.4); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--fern); }
+.breadcrumb .sep { color: rgba(75,191,186,0.3); }
+.breadcrumb .current { color: var(--fern); }
 
 .product-detail-grid {
   display: grid;
@@ -28,11 +28,11 @@
 .gallery-main {
   position: relative;
   aspect-ratio: 4/3;
-  background: var(--forest);
+  background: var(--cream);
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 0.75rem;
-  border: 1px solid rgba(168,200,50,0.1);
+  border: 1px solid rgba(75,191,186,0.1);
 }
 .gallery-main img, .gallery-main .gallery-placeholder {
   width: 100%; height: 100%;
@@ -42,13 +42,13 @@
 .gallery-placeholder {
   display: flex; align-items: center; justify-content: center;
   font-size: 6rem;
-  background: linear-gradient(135deg, var(--forest-mid), var(--forest));
+  background: linear-gradient(135deg, var(--bark), var(--cream));
 }
 .gallery-main:hover img { transform: scale(1.05); }
 .gallery-zoom-hint {
   position: absolute; bottom: 0.75rem; right: 0.75rem;
   background: rgba(13,26,13,0.8);
-  color: var(--lime); font-size: 0.7rem; font-family: 'Barlow Condensed', sans-serif;
+  color: var(--fern); font-size: 0.7rem; font-family: 'Barlow Condensed', sans-serif;
   letter-spacing: 0.15em;
   padding: 4px 10px; border-radius: 2px;
 }
@@ -60,19 +60,19 @@
   border-radius: 6px; overflow: hidden;
   cursor: none; border: 2px solid transparent;
   transition: border-color 0.2s;
-  background: var(--forest);
+  background: var(--cream);
   flex-shrink: 0;
 }
-.gallery-thumb.active { border-color: var(--lime); }
+.gallery-thumb.active { border-color: var(--fern); }
 .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
 
 /* PRODUCT INFO */
 .product-info-panel {}
 .product-category-tag {
   display: inline-flex; align-items: center; gap: 0.4rem;
-  background: rgba(168,200,50,0.1);
-  border: 1px solid rgba(168,200,50,0.2);
-  color: var(--lime);
+  background: rgba(75,191,186,0.1);
+  border: 1px solid rgba(75,191,186,0.2);
+  color: var(--fern);
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -81,12 +81,12 @@
   margin-bottom: 1rem;
   transition: background 0.2s;
 }
-.product-category-tag:hover { background: rgba(168,200,50,0.2); }
+.product-category-tag:hover { background: rgba(75,191,186,0.2); }
 .product-name {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(2rem, 4vw, 3rem);
   letter-spacing: 0.04em; line-height: 1;
-  color: var(--white); margin-bottom: 1.25rem;
+  color: var(--ivory); margin-bottom: 1.25rem;
 }
 .product-price-wrap {
   display: flex; align-items: baseline; gap: 0.75rem;
@@ -94,10 +94,10 @@
 }
 .product-detail-price {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.2rem; color: var(--lime); letter-spacing: 0.05em;
+  font-size: 2.2rem; color: var(--fern); letter-spacing: 0.05em;
 }
 .product-detail-old {
-  font-size: 1rem; color: var(--rock);
+  font-size: 1rem; color: rgba(26,26,26,0.35);
   text-decoration: line-through;
 }
 .product-discount-tag {
@@ -121,13 +121,13 @@
 .stock-text.out { color: var(--ember); }
 
 .product-desc {
-  color: rgba(248,245,238,0.65);
+  color: rgba(26,26,26,0.65);
   line-height: 1.75; margin-bottom: 2rem;
   font-size: 0.95rem;
 }
 .product-meta {
-  background: var(--forest);
-  border: 1px solid rgba(168,200,50,0.1);
+  background: var(--cream);
+  border: 1px solid rgba(75,191,186,0.1);
   border-radius: 8px;
   padding: 1.25rem;
   margin-bottom: 2rem;
@@ -135,12 +135,12 @@
 .product-meta-row {
   display: flex; justify-content: space-between;
   padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(168,200,50,0.06);
+  border-bottom: 1px solid rgba(75,191,186,0.06);
   font-size: 0.875rem;
 }
 .product-meta-row:last-child { border-bottom: none; }
-.meta-key { color: rgba(248,245,238,0.4); }
-.meta-val { color: var(--white); font-weight: 500; }
+.meta-key { color: rgba(26,26,26,0.4); }
+.meta-val { color: var(--ivory); font-weight: 500; }
 
 .product-actions {
   display: flex; flex-direction: column; gap: 0.75rem;
@@ -161,12 +161,12 @@
   transform: translateY(-2px);
 }
 .product-actions .btn-wa-lg.inquiry {
-  background: var(--forest);
-  border: 1.5px solid rgba(168,200,50,0.3);
-  color: var(--lime);
+  background: var(--cream);
+  border: 1.5px solid rgba(75,191,186,0.3);
+  color: var(--fern);
 }
 .product-actions .btn-wa-lg.inquiry:hover {
-  background: rgba(168,200,50,0.08);
+  background: rgba(75,191,186,0.08);
   box-shadow: none;
 }
 
@@ -175,9 +175,9 @@
 .related-section h3 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 2rem; letter-spacing: 0.06em;
-  color: var(--white); margin-bottom: 1.5rem;
+  color: var(--ivory); margin-bottom: 1.5rem;
 }
-.related-section h3 span { color: var(--lime); }
+.related-section h3 span { color: var(--fern); }
 
 @media (max-width: 900px) {
   .product-detail-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -312,16 +312,16 @@
 </div>
 
 <!-- INQUIRY MODAL -->
-<div id="inquiryModal" style="display:none; position:fixed; inset:0; z-index:5000; background:rgba(13,26,13,0.9); backdrop-filter:blur(10px); align-items:center; justify-content:center;">
-  <div style="background:var(--forest); border:1px solid rgba(168,200,50,0.2); border-radius:12px; padding:2.5rem; width:100%; max-width:480px; margin:1rem; position:relative;">
-    <button onclick="closeInquiry()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--white);font-size:1.5rem;cursor:none;">✕</button>
+<div id="inquiryModal" style="display:none; position:fixed; inset:0; z-index:5000; background:rgba(245,249,249,.95); backdrop-filter:blur(10px); align-items:center; justify-content:center;">
+  <div style="background:var(--cream); border:1px solid rgba(75,191,186,0.2); border-radius:12px; padding:2.5rem; width:100%; max-width:480px; margin:1rem; position:relative;">
+    <button onclick="closeInquiry()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--ivory);font-size:1.5rem;cursor:none;">✕</button>
     <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.75rem;margin-bottom:0.5rem;">SEND INQUIRY</h3>
-    <p style="color:rgba(248,245,238,0.5);font-size:0.875rem;margin-bottom:1.5rem;">About: <strong style="color:var(--lime);">{{ product.name }}</strong></p>
+    <p style="color:rgba(26,26,26,0.5);font-size:0.875rem;margin-bottom:1.5rem;">About: <strong style="color:var(--fern);">{{ product.name }}</strong></p>
     <div style="display:flex;flex-direction:column;gap:1rem;">
-      <input type="text" id="inqName" placeholder="Your Name *" style="background:rgba(255,255,255,0.06);border:1px solid rgba(168,200,50,0.15);border-radius:6px;padding:0.75rem 1rem;color:var(--white);font-family:'Barlow',sans-serif;font-size:0.95rem;outline:none;width:100%;">
-      <input type="tel" id="inqPhone" placeholder="Phone Number" style="background:rgba(255,255,255,0.06);border:1px solid rgba(168,200,50,0.15);border-radius:6px;padding:0.75rem 1rem;color:var(--white);font-family:'Barlow',sans-serif;font-size:0.95rem;outline:none;width:100%;">
-      <textarea id="inqMessage" placeholder="Your message..." rows="4" style="background:rgba(255,255,255,0.06);border:1px solid rgba(168,200,50,0.15);border-radius:6px;padding:0.75rem 1rem;color:var(--white);font-family:'Barlow',sans-serif;font-size:0.95rem;outline:none;width:100%;resize:vertical;"></textarea>
-      <button onclick="submitInquiry()" style="background:var(--lime);color:var(--dark);font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.1em;border:none;padding:0.85rem;border-radius:6px;cursor:none;transition:background 0.2s;">SEND INQUIRY</button>
+      <input type="text" id="inqName" placeholder="Your Name *" style="background:rgba(75,191,186,0.05);border:1px solid rgba(75,191,186,0.15);border-radius:6px;padding:0.75rem 1rem;color:var(--ivory);font-family:'Barlow',sans-serif;font-size:0.95rem;outline:none;width:100%;">
+      <input type="tel" id="inqPhone" placeholder="Phone Number" style="background:rgba(75,191,186,0.05);border:1px solid rgba(75,191,186,0.15);border-radius:6px;padding:0.75rem 1rem;color:var(--ivory);font-family:'Barlow',sans-serif;font-size:0.95rem;outline:none;width:100%;">
+      <textarea id="inqMessage" placeholder="Your message..." rows="4" style="background:rgba(75,191,186,0.05);border:1px solid rgba(75,191,186,0.15);border-radius:6px;padding:0.75rem 1rem;color:var(--ivory);font-family:'Barlow',sans-serif;font-size:0.95rem;outline:none;width:100%;resize:vertical;"></textarea>
+      <button onclick="submitInquiry()" style="background:var(--fern);color:var(--bark);font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.1em;border:none;padding:0.85rem;border-radius:6px;cursor:none;transition:background 0.2s;">SEND INQUIRY</button>
     </div>
   </div>
 </div>

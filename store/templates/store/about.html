@@ -33,12 +33,12 @@
 }
 </style>
 
-<div style="background:linear-gradient(to bottom,var(--forest-mid),var(--dark));border-bottom:1px solid rgba(168,200,50,0.1);padding:5rem 0 4rem;position:relative;overflow:hidden;" class="about-hero">
+<div style="background:linear-gradient(to bottom,var(--bark),var(--bark));border-bottom:1px solid rgba(75,191,186,0.1);padding:5rem 0 4rem;position:relative;overflow:hidden;" class="about-hero">
   <div style="position:absolute;right:5%;top:50%;transform:translateY(-50%);font-size:14rem;opacity:0.04;pointer-events:none;display:none;">🏔️</div>
   <div class="container">
     <div class="section-label">Who We Are</div>
     <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6rem);letter-spacing:0.04em;line-height:0.95;margin-top:0.5rem;">
-      ABOUT OUR <span style="color:var(--lime);">STORE</span>
+      ABOUT OUR <span style="color:var(--fern);">STORE</span>
     </h1>
   </div>
 </div>
@@ -48,14 +48,14 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;" class="about-grid reveal">
       <div>
         <div class="section-label">Founded 2021</div>
-        <h2 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.04em;color:var(--white);margin:0.5rem 0 1.5rem;">TANZANIA'S OUTDOOR <span style="color:var(--lime);">SPECIALISTS</span></h2>
-        <p style="color:rgba(248,245,238,0.65);line-height:1.8;margin-bottom:1.5rem;">
+        <h2 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.04em;color:var(--ivory);margin:0.5rem 0 1.5rem;">TANZANIA'S OUTDOOR <span style="color:var(--fern);">SPECIALISTS</span></h2>
+        <p style="color:rgba(26,26,26,0.65);line-height:1.8;margin-bottom:1.5rem;">
           Founded in 2021, Hiker Store TZ specializes in camping, hiking, and tactical gear designed for durability, comfort, and reliability in outdoor environments.
         </p>
-        <p style="color:rgba(248,245,238,0.65);line-height:1.8;margin-bottom:1.5rem;">
+        <p style="color:rgba(26,26,26,0.65);line-height:1.8;margin-bottom:1.5rem;">
           With locations in Dar es Salaam and Arusha, we proudly serve customers across Tanzania who love adventure, travel, and outdoor exploration.
         </p>
-        <p style="color:rgba(248,245,238,0.65);line-height:1.8;margin-bottom:2rem;">
+        <p style="color:rgba(26,26,26,0.65);line-height:1.8;margin-bottom:2rem;">
           We support campers, hikers, tour operators, travelers, and field professionals by providing practical gear that makes outdoor experiences safer and more enjoyable. Our mission is to equip people with the right tools to explore nature with confidence.
         </p>
         <a href="{% url 'all_products' %}" class="btn btn-primary">Browse Our Gear →</a>
@@ -65,9 +65,9 @@
         {% comment %}
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;" class="features-grid">
           {% for item in "⛺ Tents,🎒 Backpacks,🥾 Hiking Boots,🧭 Navigation,🔦 Lighting,💧 Hydration,🪑 Camping Chairs,☂️ Umbrellas,📻 Radio Calls,🌿 Garden Tools"|split:"," %}
-          <div style="background:var(--forest);border:1px solid rgba(168,200,50,0.1);border-radius:8px;padding:1.25rem;text-align:center;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(168,200,50,0.4)'" onmouseout="this.style.borderColor='rgba(168,200,50,0.1)'">
+          <div style="background:var(--cream);border:1px solid rgba(75,191,186,0.1);border-radius:8px;padding:1.25rem;text-align:center;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(75,191,186,0.4)'" onmouseout="this.style.borderColor='rgba(75,191,186,0.1)'">
             <div style="font-size:1.5rem;margin-bottom:0.25rem;">{{ item|slice:":2" }}</div>
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.1em;color:rgba(248,245,238,0.6);text-transform:uppercase;">{{ item|slice:"3:" }}</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.1em;color:rgba(26,26,26,0.6);text-transform:uppercase;">{{ item|slice:"3:" }}</div>
           </div>
           {% endfor %}
         </div>
@@ -76,8 +76,8 @@
     </div>
 
     <!-- MISSION -->
-    <div style="margin-top:5rem;background:var(--forest);border:1px solid rgba(168,200,50,0.1);border-radius:16px;padding:3rem;position:relative;overflow:hidden;" class="mission-section reveal">
-      <div style="position:absolute;top:-1px;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--lime),transparent);"></div>
+    <div style="margin-top:5rem;background:var(--cream);border:1px solid rgba(75,191,186,0.1);border-radius:16px;padding:3rem;position:relative;overflow:hidden;" class="mission-section reveal">
+      <div style="position:absolute;top:-1px;left:0;right:0;height:3px;background:linear-gradient(to right,transparent,var(--fern),transparent);"></div>
       <div style="text-align:center;max-width:700px;margin:0 auto;">
         <div style="font-size:3rem;margin-bottom:1rem;">🎯</div>
         <h3 style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.06em;margin-bottom:1rem;">OUR MISSION</h3>
@@ -92,27 +92,27 @@
     <div style="margin-top:4rem;" class="reveal">
       <div style="text-align:center;margin-bottom:2.5rem;">
         <div class="section-label" style="justify-content:center;">Find Us</div>
-        <h2 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.04em;margin-top:0.5rem;">OUR <span style="color:var(--lime);">LOCATIONS</span></h2>
+        <h2 style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.04em;margin-top:0.5rem;">OUR <span style="color:var(--fern);">LOCATIONS</span></h2>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;" class="locations-grid">
-        <div style="background:var(--forest);border:1px solid rgba(168,200,50,0.15);border-radius:12px;padding:2.5rem;text-align:center;position:relative;overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--lime);"></div>
+        <div style="background:var(--cream);border:1px solid rgba(75,191,186,0.15);border-radius:12px;padding:2.5rem;text-align:center;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--fern);"></div>
           <div style="font-size:3rem;margin-bottom:1rem;">🌊</div>
-          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.75rem;letter-spacing:0.05em;color:var(--lime);">DAR ES SALAAM</h3>
-          <p style="color:rgba(248,245,238,0.55);margin-top:0.5rem;">Tanzania's commercial capital & coastal hub</p>
+          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.75rem;letter-spacing:0.05em;color:var(--fern);">DAR ES SALAAM</h3>
+          <p style="color:rgba(26,26,26,0.55);margin-top:0.5rem;">Tanzania's commercial capital & coastal hub</p>
           <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:0.5rem;">
-            <a href="tel:0742357287" style="color:var(--white);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;">📞 {{ store_contacts.phone1 }}</a>
-            <a href="tel:+255689641419" style="color:var(--white);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;">📞 {{ store_contacts.phone2 }}</a>
+            <a href="tel:0742357287" style="color:var(--ivory);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;">📞 {{ store_contacts.phone1 }}</a>
+            <a href="tel:+255689641419" style="color:var(--ivory);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;">📞 {{ store_contacts.phone2 }}</a>
           </div>
         </div>
-        <div style="background:var(--forest);border:1px solid rgba(168,200,50,0.15);border-radius:12px;padding:2.5rem;text-align:center;position:relative;overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--lime);"></div>
+        <div style="background:var(--cream);border:1px solid rgba(75,191,186,0.15);border-radius:12px;padding:2.5rem;text-align:center;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--fern);"></div>
           <div style="font-size:3rem;margin-bottom:1rem;">⛰️</div>
-          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.75rem;letter-spacing:0.05em;color:var(--lime);">ARUSHA</h3>
-          <p style="color:rgba(248,245,238,0.55);margin-top:0.5rem;">Gateway to Kilimanjaro & Tanzania's safari parks</p>
+          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.75rem;letter-spacing:0.05em;color:var(--fern);">ARUSHA</h3>
+          <p style="color:rgba(26,26,26,0.55);margin-top:0.5rem;">Gateway to Kilimanjaro & Tanzania's safari parks</p>
           <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:0.5rem;">
-            <a href="tel:0759131659" style="color:var(--white);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;">📞 {{ store_contacts.phone3 }}</a>
-            <a href="https://wa.me/{{ whatsapp_number }}" style="color:var(--lime);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;" target="_blank">💬 WhatsApp</a>
+            <a href="tel:0759131659" style="color:var(--ivory);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;">📞 {{ store_contacts.phone3 }}</a>
+            <a href="https://wa.me/{{ whatsapp_number }}" style="color:var(--fern);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;" target="_blank">💬 WhatsApp</a>
           </div>
         </div>
       </div>
