@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +13,7 @@
 
 <style>
 /* ══════════════════════════════════════════
-   PALETTE — Savanna × Maasai × Forest (IMARISHWA KWA UKOLEZI WA RANGI)
+   PALETTE — Savanna × Maasai × Forest
 ══════════════════════════════════════════ */
 :root {
   --ink:    #ffffff;
@@ -34,12 +33,6 @@
   --stone:  #5a8a88;
   --rock:   #9a9a9a;
 
-  /* ===== RANGI MPYA ZENYE UKOLEZI KWA AJILI YA KUSOMEKA VIZURI ===== */
-  --text-primary: #0A0A0A;      /* Nyeusi imekolea kwa maandishi makuu */
-  --text-secondary: #1A2B2B;    /* Rangi ya sekondari yenye ukolezi (badala ya rgba 0.65) */
-  --text-muted: #2C3E3E;        /* Rangi 'muted' iliyokolea (badala ya rgba 0.5) */
-  --text-fern-contrast: #1A6B68; /* Rangi ya kijani (fern) iliyokolea zaidi kwa utofauti mzuri */
-
   --bw:  rgba(75,191,186,0.12);
   --bwm: rgba(75,191,186,0.2);
   --bo:  rgba(75,191,186,0.2);
@@ -49,7 +42,7 @@
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--text-primary);overflow-x:hidden;cursor:none;}
+body{font-family:'Barlow',sans-serif;background:var(--cream);color:var(--ivory);overflow-x:hidden;cursor:none;}
 
 /* CURSOR */
 .cursor{width:9px;height:9px;background:var(--ivory);border-radius:50%;position:fixed;z-index:99999;pointer-events:none;transition:transform .15s ease,background .2s;mix-blend-mode:difference;}
@@ -67,7 +60,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .navbar{
   position:fixed;top:0;left:0;right:0;z-index:1000;
   height:70px;display:flex;align-items:center;
-  background:rgba(43, 231, 238, 0.97);
+  background:rgba(255,255,255,.97);
   backdrop-filter:blur(20px);
   transition:all .4s ease;overflow:hidden;
 }
@@ -128,7 +121,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   padding:.45rem;display:none;box-shadow:var(--shadow);
 }
 .nav-search-box.open{display:flex;gap:.45rem;}
-.nav-search-box input{flex:1;background:none;border:none;outline:none;color:var(--text-primary);font-family:'Barlow',sans-serif;font-size:.88rem;padding:.28rem .45rem;}
+.nav-search-box input{flex:1;background:none;border:none;outline:none;color:var(--ivory);font-family:'Barlow',sans-serif;font-size:.88rem;padding:.28rem .45rem;}
 .nav-search-box input::placeholder{color:rgba(26,26,26,.3);}
 .nav-search-box button{background:var(--fern);border:none;cursor:none;color:var(--chalk);padding:.28rem .7rem;border-radius:2px;font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;transition:background .2s;}
 .nav-search-box button:hover{background:var(--moss);}
@@ -448,6 +441,9 @@ footer{background:#f5f9f9;border-top:1px solid var(--bw);padding:0;margin-top:5r
 /* RESPONSIVE */
 @media(max-width:900px){.nav-links{display:none;}.nav-hamburger{display:flex;}.footer-grid{grid-template-columns:1fr 1fr;}.sidebar{width:288px;}}
 @media(max-width:600px){.footer-grid{grid-template-columns:1fr;gap:2rem;}.footer-bottom{flex-direction:column;text-align:center;}.products-grid{grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:.65rem;}.whatsapp-btn span{display:none;}.sidebar{width:100%;border-right:none;}.container{padding:0 1rem;}}
+</style>
+<style>
+
 /* ════════════════ LOGO IMAGES ════════════════ */
 .nav-logo-img {
   height: 48px;
@@ -522,7 +518,7 @@ footer {
 .ticker-track { color: rgba(75,191,186,.6) !important; }
 .footer-ticker { 
   border-top-color: rgba(75,191,186,.15) !important;
-  background: rgba(115, 139, 138, 0.04) !important;
+  background: rgba(75,191,186,.04) !important;
 }
 .footer-ticker::before, .footer-ticker::after { background: #4BBFBA !important; }
 .footer-bottom-wrap { border-top-color: rgba(255,255,255,.08) !important; }
@@ -545,7 +541,7 @@ footer {
 .product-card-img-placeholder { background: linear-gradient(135deg, #e6f7f7, #c8eded) !important; }
 .product-card-body { padding: 1rem 1.1rem 1.2rem !important; }
 .product-card-cat { color: #4BBFBA !important; font-size: .65rem !important; }
-.product-card-name { color: var(--text-primary) !important; font-size: 1rem !important; }
+.product-card-name { color: #1a1a1a !important; font-size: 1rem !important; }
 .product-price-new { color: #2a8a85 !important; }
 .product-price-old { color: rgba(26,26,26,.35) !important; }
 
@@ -633,59 +629,15 @@ body { background: #f7fafa !important; }
 .cursor { background: #1a1a1a !important; }
 .cursor-ring { border-color: rgba(75,191,186,.6) !important; }
 
-/* ===== OVERRIDE TEXT COLORS FOR BETTER CONTRAST (UKOLEZI WA RANGI) ===== */
-body, p, li, .product-card-name, .product-card-desc, .hero-subtitle, .about-strip-desc, .product-desc, .why-card-desc,
-.nav-links a, .sidebar .sb-link, .sidebar .sb-cat-item, .footer-col ul a, .footer-contact-item {
-  color: var(--text-primary) !important;
-}
-
-.product-card-cat, .section-label, .footer-col h4, .filter-label, .meta-key, .breadcrumb a, .breadcrumb .sep,
-.sb-section-label, .sb-badge, .product-meta-row .meta-key {
-  color: var(--text-secondary) !important;
-}
-
-.product-price-old, .filter-count, .footer-copy, .sb-link-desc, .product-meta-row .meta-key,
-.footer-loc-badge, .ticker-track, .hero-stat-label, .why-card-desc {
-  color: var(--text-muted) !important;
-}
-
-.product-price-new, .product-card-cat, .section-label::before, .hero-overline, .stock-text.in, .btn-primary, 
-.btn-outline, .category-card-count, .why-card-title, .product-category-tag, .hero-overline::before,
-.sb-link.active .sb-link-name, .sb-cat-item:hover {
-  color: var(--text-fern-contrast) !important;
-}
-
-/* Ensure specific elements like hero title remain white/ivory */
-.hero-title, .page-hero-title, .product-name, .cta-inner h2, .section-title, .sidebar-logo-main, .footer-logo-text {
-  color: var(--ivory) !important;
-}
-
-/* Ensure links in footer and sidebar are readable on hover */
-.footer-col ul a:hover, .sb-link:hover .sb-link-name {
-  color: var(--fern) !important;
-}
-
 @media(max-width:600px) {
   .nav-logo-img { height: 38px; }
   .sidebar-logo-img { height: 44px; }
   .footer-logo-img { height: 46px; }
 }
 
-
-
-/* Force all footer text to be white */
-footer, footer * { color: #FFFFFF !important; }
-footer a { color: #4BBFBA !important; }
-footer a:hover { color: #FFFFFF !important; }
-footer .footer-contact-item .icon { color: #4BBFBA !important; }
-footer .whatsapp-btn { background: #25D366 !important; color: #FFFFFF !important; }
-footer .ticker-track .sep { color: rgba(255,255,255,0.4) !important; }
 </style>
 {% block extra_css %}{% endblock %}
 </head>
-
-
-
 <body>
 
 <div class="cursor" id="cursor"></div>
@@ -845,8 +797,8 @@ footer .ticker-track .sep { color: rgba(255,255,255,0.4) !important; }
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
-        <ul >
-          <li><a  href="{% url 'home' %}">🏠 Home</a></li>
+        <ul>
+          <li><a href="{% url 'home' %}">🏠 Home</a></li>
           <li><a href="{% url 'all_products' %}">📦 All Products</a></li>
           <li><a href="{% url 'about' %}">ℹ️ About Us</a></li>
           <li><a href="{% url 'contact' %}">📞 Contact</a></li>
@@ -889,11 +841,11 @@ footer .ticker-track .sep { color: rgba(255,255,255,0.4) !important; }
     <div class="footer-bottom-wrap">
       <div class="footer-bottom">
         <p class="footer-copy">© 2026 Hiker Store TZ. All rights reserved. Founded 2021.</p>
-        <div style="font-size:.76rem;color:rgba(228, 219, 219, 0.966);" class="footer-locations">
+        <div class="footer-locations">
           <span class="footer-loc-badge">📍 Dar es Salaam</span>
           <span class="footer-loc-badge">📍 Arusha</span>
         </div>
-        <div style="font-size:.76rem;color:rgba(228, 219, 219, 0.966);">
+        <div style="font-size:.76rem;color:rgba(26,26,26,.2);">
           Designed by <a href="http://www.jamiitek.com" target="_blank" style="color:var(--fern);text-decoration:none;font-weight:600;">JamiiTek</a>
         </div>
       </div>
@@ -945,5 +897,81 @@ function showToast(msg,type='success'){const t=document.getElementById('toast');
 window.showToast=showToast;
 </script>
 {% block extra_js %}{% endblock %}
+<style>
+html{font-size:17px;}
+body{color:#0a0a0a!important;background:#f7fafa!important;}
+.nav-links a{color:#0a0a0a!important;font-size:.92rem!important;font-weight:700!important;}
+.nav-links a:hover{color:#2a8a85!important;}
+.nav-links a.active{color:#4BBFBA!important;}
+.nav-search-toggle{color:#0a0a0a!important;}
+.nav-hamburger span{background:#0a0a0a!important;}
+.sidebar{background:#fff!important;}
+.sb-link,.sb-link:hover,.sb-link.active{color:#0a0a0a!important;}
+.sb-link-name{color:#0a0a0a!important;font-size:.96rem!important;font-weight:700!important;}
+.sb-link-desc{color:#444!important;font-size:.72rem!important;}
+.sb-link-arrow{color:#4BBFBA!important;opacity:1!important;}
+.sb-cats-toggle{color:#0a0a0a!important;}
+.sb-section-label{color:#4BBFBA!important;font-weight:700;}
+.sb-badge{color:#0a0a0a!important;font-weight:700;border-color:rgba(75,191,186,.3)!important;background:rgba(75,191,186,.08)!important;}
+.sb-loc{color:#0a0a0a!important;font-weight:600;}
+.sidebar-close{color:#0a0a0a!important;background:rgba(0,0,0,.05)!important;border-color:rgba(0,0,0,.12)!important;}
+.sb-cats-chevron{color:#2a8a85!important;}
+.sb-cat-item{color:#0a0a0a!important;font-size:.88rem!important;font-weight:600!important;}
+.product-card{background:#fff!important;border:1.5px solid rgba(0,0,0,.1)!important;border-radius:12px!important;box-shadow:0 2px 16px rgba(0,0,0,.07)!important;}
+.product-card:hover{box-shadow:0 16px 40px rgba(75,191,186,.25),0 0 0 2px #4BBFBA!important;border-color:#4BBFBA!important;transform:translateY(-6px)!important;}
+.product-card-cat{color:#2a8a85!important;font-size:.72rem!important;font-weight:700!important;}
+.product-card-name{color:#0a0a0a!important;font-size:1.08rem!important;font-weight:700!important;}
+.product-price-new{color:#2a8a85!important;font-size:1.35rem!important;}
+.product-price-old{color:#777!important;font-size:.85rem!important;}
+.btn-detail{background:#0a0a0a!important;border:1.5px solid #0a0a0a!important;color:#fff!important;font-size:.82rem!important;font-weight:700!important;letter-spacing:.08em!important;padding:.5rem .8rem!important;border-radius:6px!important;}
+.btn-detail:hover{background:#4BBFBA!important;border-color:#4BBFBA!important;color:#fff!important;}
+.btn-wa{border-radius:6px!important;font-size:.82rem!important;font-weight:700!important;padding:.5rem .8rem!important;}
+.section-label{color:#2a8a85!important;font-size:.75rem!important;font-weight:700!important;}
+.section-title{color:#0a0a0a!important;}
+.section-title span{color:#4BBFBA!important;}
+.filter-bar{background:#fff!important;border-bottom:2px solid rgba(75,191,186,.2)!important;box-shadow:0 2px 12px rgba(0,0,0,.06)!important;}
+.filter-select{color:#0a0a0a!important;background:#f5f5f5!important;border-color:rgba(0,0,0,.2)!important;font-size:.9rem!important;font-weight:600!important;}
+.filter-count{color:#333!important;font-size:.88rem!important;font-weight:600!important;}
+.filter-count span{color:#2a8a85!important;font-weight:700!important;}
+.category-card-name{color:#fff!important;font-size:1.4rem!important;text-shadow:0 2px 8px rgba(0,0,0,.7)!important;}
+.category-card-count{color:rgba(255,255,255,.85)!important;font-size:.78rem!important;text-shadow:0 1px 4px rgba(0,0,0,.5)!important;}
+.breadcrumb{color:#333!important;font-size:.88rem!important;}
+.breadcrumb a{color:#333!important;}
+.breadcrumb a:hover{color:#2a8a85!important;}
+.breadcrumb .current{color:#4BBFBA!important;font-weight:700!important;}
+.breadcrumb .sep{color:#4BBFBA!important;}
+.product-badge{font-size:.68rem!important;font-weight:700!important;}
+.product-badge.sale{background:#4BBFBA!important;color:#fff!important;}
+.btn{font-size:.9rem!important;letter-spacing:.12em!important;border-radius:6px!important;}
+.btn-primary{background:#4BBFBA!important;color:#fff!important;font-weight:700!important;}
+.btn-primary:hover{background:#2a8a85!important;box-shadow:0 8px 28px rgba(75,191,186,.4)!important;}
+.btn-outline{border:1.5px solid #4BBFBA!important;color:#2a8a85!important;background:transparent!important;font-weight:700!important;}
+.btn-outline:hover{background:#4BBFBA!important;color:#fff!important;}
+.whatsapp-btn{background:#25D366!important;border-color:#25D366!important;color:#fff!important;border-radius:6px!important;font-size:.85rem!important;font-weight:700!important;}
+.whatsapp-btn:hover{background:#1db954!important;border-color:#1db954!important;}
+.sb-wa-btn{background:#25D366!important;border-color:#25D366!important;color:#fff!important;border-radius:6px!important;font-size:.85rem!important;font-weight:700!important;}
+.sb-wa-btn:hover{background:#1db954!important;}
+footer{background:#0a0a0a!important;border-top:4px solid #4BBFBA!important;}
+.footer-tribal-top,.tribal-chevrons{display:none!important;}
+.footer-desc{color:rgba(255,255,255,.75)!important;font-size:.92rem!important;line-height:1.85!important;}
+.footer-col h4{color:#4BBFBA!important;font-size:.75rem!important;letter-spacing:.3em!important;}
+.footer-col h4::after{background:linear-gradient(to right,rgba(75,191,186,.35),transparent)!important;}
+.footer-col ul a{color:rgba(255,255,255,.8)!important;font-size:.92rem!important;}
+.footer-col ul a:hover{color:#4BBFBA!important;}
+.footer-contact-item{color:rgba(255,255,255,.8)!important;font-size:.92rem!important;}
+.footer-contact-item .icon{color:#4BBFBA!important;}
+.footer-ticker{border-top-color:rgba(255,255,255,.08)!important;background:rgba(75,191,186,.04)!important;}
+.ticker-track{color:rgba(255,255,255,.6)!important;font-size:.82rem!important;}
+.ticker-track .sep{color:#4BBFBA!important;}
+.footer-ticker::before,.footer-ticker::after{background:#4BBFBA!important;opacity:.8!important;}
+.footer-bottom-wrap{border-top:1px solid rgba(255,255,255,.1)!important;}
+.footer-copy{color:rgba(255,255,255,.45)!important;font-size:.82rem!important;}
+.footer-loc-badge{color:rgba(255,255,255,.72)!important;border-color:rgba(255,255,255,.2)!important;font-size:.75rem!important;}
+.toast{background:#0a0a0a!important;color:#fff!important;font-size:.92rem!important;}
+::-webkit-scrollbar-track{background:#f0fafa!important;}
+::-webkit-scrollbar-thumb{background:#4BBFBA!important;}
+@media(max-width:600px){html{font-size:15px;}.product-card-name{font-size:.95rem!important;}.product-price-new{font-size:1.15rem!important;}.btn-detail,.btn-wa{font-size:.78rem!important;padding:.45rem .6rem!important;}}
+</style>
+
 </body>
 </html>
