@@ -1,6 +1,7 @@
 services:
   - type: web
     name: hiker-store-tz
+    pythonVersion: "3.12"
     env: python
     buildCommand: "./build.sh"
     startCommand: "gunicorn hiker_store.wsgi:application"
