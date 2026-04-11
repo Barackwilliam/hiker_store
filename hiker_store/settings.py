@@ -4,9 +4,7 @@ import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env(DEBUG=(bool, True))
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-
+DEBUG=False
 SECRET_KEY = env('SECRET_KEY', default='django-insecure-hiker-store-tz-2024-change-in-prod')
 DEBUG = env('DEBUG', default=True)
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
