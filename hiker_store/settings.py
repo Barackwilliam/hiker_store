@@ -4,7 +4,9 @@ import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DEBUG=False
+env = environ.Env(DEBUG=(bool, False))
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 SECRET_KEY = env('SECRET_KEY', default='django-insecure-hiker-store-tz-2024-change-in-prod')
 DEBUG = env('DEBUG', default=True)
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
@@ -19,6 +21,9 @@ INSTALLED_APPS = [
     'store',
 ]
 
+JAMIITEK_API_URL = "https://jamiitek.com/api/site-status/"
+JAMIITEK_API_KEY = "Ik-Hhj9eGLY10FDUs0PDHM-EPdVL60AZJQkFf8_lb9fIRhsUBpooVi9oJW3QQ-3N"
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -28,6 +33,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'jamiitek_middleware.JamiiTekStatusMiddleware',
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
